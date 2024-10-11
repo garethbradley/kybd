@@ -6,30 +6,11 @@ units:
 points:
   key:
     padding: cy
-    footprints:
-      choc_hotswap:
-        type: choc
-        nets:
-          from: =column_net
-          to: GND
-        params:
-          keycaps: true
-          reverse: true
-          hotswap: true
-      choc:
-        type: choc
-        anchor:
-          rotate: 180
-          nets:
-            from: =column_net
-            to: GND
-          params:
-            keycaps: true
-            reverse: true
   zones:
     matrix:
       anchor:
         rotate: 20
+        shift: [110, -100]
       columns:
         macro:
         pinky:
@@ -120,3 +101,24 @@ outlines:
     - name: board
     - operation: subtract
       name: keys
+pcbs:
+  main_pcb:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        params:
+          from: =column_net
+          to: GND
+          keycaps: true
+          reverse: true
+          hotswap: true
+      choc:
+        what: choc
+        params:
+          from: =column_net
+          to: GND
+          keycaps: true
+          reverse: true
