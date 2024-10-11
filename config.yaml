@@ -1,0 +1,107 @@
+units:
+  kx: cx
+  ky: cy
+  px: kx + 2
+  py: ky + 2
+points:
+  key:
+    padding: cy
+    footprints:
+      choc_hotswap:
+        type: choc
+        nets:
+          from: =column_net
+          to: GND
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+      choc:
+        type: choc
+        anchor:
+          rotate: 180
+          nets:
+            from: =column_net
+            to: GND
+          params:
+            keycaps: true
+            reverse: true
+  zones:
+    matrix:
+      anchor:
+        rotate: 20
+      columns:
+        macro:
+        pinky:
+        ring:
+          key.splay: 0
+          key.origin: [-12, -19]
+          key.stagger: 5
+        middle:
+          key.stagger: 5
+        index:
+          key.stagger: -7
+        inner:
+          key.stagger: -3
+      rows:
+        bottom:
+        middle:
+        top:
+        num:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-7, -19]
+      columns:
+        home:
+          key.splay: -30
+          key.origin: [-5.75, -20]
+        far:
+          key.spread: 21.25
+          key.splay: 0
+          key.stagger: 4
+      rows:
+        thumb:
+  rotate: -20
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_macro_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_macro_bottom
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_ring_bottom
+          shift: [-8,-0.5py-5]
+        - ref: matrix_ring_bottom
+          shift: [-8,-0.5py-1]
+        - ref: matrix_ring_bottom
+          shift: [px,-0.5py-1]
+        - ref: matrix_index_bottom
+          shift: [4,-py]
+        - ref: thumbfan_home_thumb
+          shift: [-0.5px+1,-0.5py-1]
+        - ref: thumbfan_home_thumb
+          shift: [0.5px+3,-0.5py-1]
+        - ref: thumbfan_far_thumb
+          shift: [0.5px,-0.5py]
+        - ref: matrix_inner_bottom
+          shift: [0.5px,0.5py]
+        - ref: matrix_inner_num
+          shift: [0,0]
+        - ref: matrix_middle_num
+          shift: [0,0]
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
