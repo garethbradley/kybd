@@ -60,7 +60,7 @@ outlines:
       fillet: 2
       points:
         - ref: matrix_macro_num
-          shift: [-0.5px,0.5py+10]
+          shift: [-0.5px,0.5py+11]
         - ref: matrix_macro_bottom
           shift: [-0.5px,-0.5py]
         - ref: matrix_ring_bottom
@@ -93,10 +93,8 @@ outlines:
           shift: [-0.5px+1,0.5py+4]
         - ref: matrix_index_num
           shift: [-0.5px+1,0.5py+1]
-        - ref: matrix_index_num
-          shift: [-0.5px+1,0.5py+2]
         - ref: matrix_middle_num
-          shift: [0.5px,0.5py]
+          shift: [0.5px,0.5py+1]
   combo:
     - name: board
     - operation: subtract
