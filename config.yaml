@@ -76,17 +76,18 @@ outlines:
   board:
     - what: polygon
       operation: stack
+      fillet: 2
       points:
         - ref: matrix_macro_num
-          shift: [-0.5px,0.5py]
+          shift: [-0.5px,0.5py+10]
         - ref: matrix_macro_bottom
           shift: [-0.5px,-0.5py]
         - ref: matrix_ring_bottom
-          shift: [-8,-0.5py-5]
+          shift: [-7,-0.5py-5]
         - ref: matrix_ring_bottom
-          shift: [-8,-0.5py-1]
+          shift: [-7,-0.5py]
         - ref: matrix_ring_bottom
-          shift: [px,-0.5py-1]
+          shift: [px,-0.5py]
         - ref: matrix_index_bottom
           shift: [4,-py]
         - ref: thumbfan_home_thumb
@@ -94,13 +95,27 @@ outlines:
         - ref: thumbfan_home_thumb
           shift: [0.5px+3,-0.5py-1]
         - ref: thumbfan_far_thumb
-          shift: [0.5px,-0.5py]
+          shift: [0.5px,-0.5py-5]
+        - ref: thumbfan_far_thumb
+          shift: [0.5px,0.5py]
         - ref: matrix_inner_bottom
+          shift: [0.5px+7,-0.5py-8]
+        - ref: matrix_inner_bottom
+          shift: [0.5px+7,-0.5py]
+        - ref: matrix_inner_bottom
+          shift: [0.5px,0]
+        - ref: matrix_inner_num
           shift: [0.5px,0.5py]
         - ref: matrix_inner_num
-          shift: [0,0]
+          shift: [-0.5px+1,0.5py]
+        - ref: matrix_inner_num
+          shift: [-0.5px+1,0.5py+4]
+        - ref: matrix_index_num
+          shift: [-0.5px+1,0.5py+1]
+        - ref: matrix_index_num
+          shift: [-0.5px+1,0.5py+2]
         - ref: matrix_middle_num
-          shift: [0,0]
+          shift: [0.5px,0.5py]
   combo:
     - name: board
     - operation: subtract
