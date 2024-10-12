@@ -107,16 +107,18 @@ pcbs:
     footprints:
       choc_hotswap:
         what: choc
+        where: true
         params:
           from: =column_net
           to: GND
           keycaps: true
           reverse: true
           hotswap: true
-      choc:
-        what: choc
+      diode:
+        what: diode
+        where: true
         params:
-          from: =column_net
-          to: GND
-          keycaps: true
-          reverse: true
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
