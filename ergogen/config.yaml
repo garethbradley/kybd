@@ -9,10 +9,12 @@ points:
   zones:
     matrix:
       anchor:
-        rotate: 20
-        shift: [110, -100]
+        rotate: 0
+        shift: [75, -75]
       columns:
         macro:
+          key:
+            column_net: 
         pinky:
         ring:
           key.splay: 0
@@ -26,9 +28,13 @@ points:
           key.stagger: -3
       rows:
         bottom:
+          row_net: P010
         middle:
+          row_net: P011
         top:
+          row_net: P106
         num:
+          row_net: P104
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
@@ -43,7 +49,12 @@ points:
           key.stagger: 4
       rows:
         thumb:
+          row_net: P009
+        
   rotate: -20
+  # mirror:
+  #   ref: thumbfan_far_thumb
+  #   distance: 100
 outlines:
   raw:
     - what: rectangle
@@ -59,18 +70,23 @@ outlines:
       operation: stack
       fillet: 2
       points:
+        # Top left
         - ref: matrix_macro_num
           shift: [-0.5px,0.5py+11]
+        # Bottom left
         - ref: matrix_macro_bottom
           shift: [-0.5px,-0.5py]
+        # Notch under Ring col
         - ref: matrix_ring_bottom
           shift: [-7,-0.5py-5]
         - ref: matrix_ring_bottom
           shift: [-7,-0.5py]
         - ref: matrix_ring_bottom
           shift: [px,-0.5py]
+        # Start of diagonal under Index col
         - ref: matrix_index_bottom
           shift: [4,-py]
+        # Around thumbfan
         - ref: thumbfan_home_thumb
           shift: [-0.5px+1,-0.5py-1]
         - ref: thumbfan_home_thumb
@@ -101,6 +117,7 @@ outlines:
       name: keys
 pcbs:
   main_pcb:
+    template: kicad8 # Required, since footprints are KiCad 8 only
     outlines:
       main:
         outline: board
@@ -115,10 +132,27 @@ pcbs:
           reverse: true
           hotswap: true
       diode:
-        what: diode
+        what: ceoloide/diode_tht_sod123
         where: true
         params:
+          reversible: true
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -5]
+          shift: [-5, -3]
+      # led:
+      #   what: ceoloide/led_sk6812mini-e
+      #   where: true
+      #   params:
+      #     P2:
+      #   adjust:
+      #     shift: [0, -8]
+      nice_nano:
+        what: garethbradley/mcu_nice_nano_v2
+        params:
+          reversible: true
+          reverse_mount: true
+        where:
+          ref: matrix_inner_top
+          shift: [px,-8]
+          rotate: 0
