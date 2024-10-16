@@ -140,6 +140,16 @@ pcbs:
           # keycaps: true
           reverse: true
           hotswap: true
+      choc_hotswap_15:
+        what: garethbradley/choc
+        where: thumbfan_far_thumb
+        params:
+          from: =column_net
+          to: GND
+          # keycaps: true
+          reverse: true
+          hotswap: true
+          keycap_3dmodel_filename: ${EG_GARETHBRADLEY_3D_MODELS}/MBK_Keycap_-_1.5u.step
       diode:
         what: ceoloide/diode_tht_sod123
         where: true
