@@ -14,18 +14,29 @@ points:
       columns:
         macro:
           key:
+            tag: choc1u
             column_net: 
         pinky:
+          key:
+            tag: choc1u
         ring:
-          key.splay: 0
-          key.origin: [-12, -19]
-          key.stagger: 5
+          key:
+            splay: 0
+            origin: [-12, -19]
+            stagger: 5
+            tag: choc1u
         middle:
-          key.stagger: 3
+          key:
+            stagger: 3
+            tag: choc1u
         index:
-          key.stagger: -3
+          key:
+            stagger: -3
+            tag: choc1u
         inner:
-          key.stagger: -3
+          key:
+            stagger: -3
+            tag: choc1u
       rows:
         bottom:
           row_net: P010
@@ -38,18 +49,25 @@ points:
     thumbfan:
       anchor:
         ref: matrix_index_bottom
-        shift: [-12, -18.5]
+        shift: [-12, -17.5]
       columns:
         near:
-          key.splay: 0
+          key:
+            splay: 0
+            tag: choc1u
         home:
-          key.spread: 21.25
-          key.splay: -15
-          key.stagger: -3
+          key:
+            spread: 21.25
+            splay: -15
+            stagger: -3
+            tag: choc1u
         far:
-          key.spread: 23.25
-          key.splay: -20
-          key.stagger: -0
+          key:
+            spread: 23.25
+            splay: -20
+            stagger: -0
+            tag: choc15u
+            rotate: 90
       rows:
         thumb:
           row_net: P009
@@ -78,7 +96,7 @@ outlines:
       points:
         # Top left
         - ref: matrix_macro_top
-          shift: [-0.5px,0.5py+8]
+          shift: [-0.5px,0.5py+5]
         # Bottom left
         - ref: matrix_macro_bottom
           shift: [-0.5px,-0.5py]
@@ -94,13 +112,13 @@ outlines:
         #  shift: [4,-py]
         # Around thumbfan
         - ref: thumbfan_near_thumb
-          shift: [-0.5px-2,-0.5py-1]
+          shift: [-0.5px+0.5,-0.5px+0.5]
         - ref: thumbfan_home_thumb
-          shift: [0.5px,-0.5py-1]
+          shift: [0.5px-0.5,-0.5py-1.5]
         - ref: thumbfan_far_thumb
-          shift: [0.5px,-0.5py-5]
-        - ref: thumbfan_far_thumb
-          shift: [0.5px,0.5py+10]
+          shift: [-0.5px-5,-0.5py] #Remember, it's rotated!
+        - ref: matrix_inner_bottom
+          shift: [0.5px+22,-0.5py-3]
         # Over top of thumbfan far
         #- ref: thumbfan_far_thumb
         #  shift: [0.5px-2,0.5py+5]
@@ -120,6 +138,10 @@ outlines:
           shift: [-0.5px+1,0.5py]
         - ref: matrix_middle_top
           shift: [0.5px,0.5py+0.001]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py+0.001]
+        - ref: matrix_middle_top
+          shift: [-0.5px,0.5py-3]
   combo:
     - name: board
     - operation: subtract
@@ -131,34 +153,51 @@ pcbs:
       main:
         outline: board
     footprints:
-      choc_hotswap:
-        what: garethbradley/choc
-        where: true
-        params:
-          from: =column_net
-          to: GND
-          # keycaps: true
-          reverse: true
-          hotswap: true
       choc_hotswap_15:
         what: garethbradley/choc
         where: thumbfan_far_thumb
         params:
           from: =column_net
           to: GND
-          # keycaps: true
+          show_keycaps: false
           reverse: true
           hotswap: true
           keycap_3dmodel_filename: ${EG_GARETHBRADLEY_3D_MODELS}/MBK_Keycap_-_1.5u.step
-      diode:
-        what: ceoloide/diode_tht_sod123
+          # keycap_3dmodel_xyz_rotation: [0, 0, 90]
+          keycap_3dmodel_xyz_offset: [-27, 0, 6.5]
+      
+      choc_hotswap:
+        what: garethbradley/choc
+        where: -thumbfan_far_thumb
+        params:
+          from: =column_net
+          to: GND
+          # keycaps: true
+          reverse: true
+          hotswap: true
+          keycap_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Choc_V1_Keycap_MBK_White_1u.step
+      
+      led:
+        what: ceoloide/led_sk6812mini-e
         where: true
         params:
-          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: =column_net
+          P4: GND
+        adjust:
+          shift: [0, -4.5]
+      
+      diode:
+        what: infused-kim/diode
+        where: true
+        params:
+          include_tht: false
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-5, -3]
+          shift: [-0, -7]
       # led:
       #   what: ceoloide/led_sk6812mini-e
       #   where: true
@@ -189,5 +228,17 @@ pcbs:
         what: garethbradley/battery_connector_jst_ph_2
         where:
           ref: matrix_inner_top
-          shift: [16,-36.5]
+          shift: [18,-36.5]
+          rotate: 90
+      switch_power:
+        what: infused-kim/switch_power
+        where:
+          ref: matrix_macro_top
+          shift: [0,0.5py+3.1]
+          rotate: 90
+      switch_reset:
+        what: infused-kim/switch_reset
+        where:
+          ref: matrix_pinky_top
+          shift: [0,0.5py+3.2]
           rotate: 90
