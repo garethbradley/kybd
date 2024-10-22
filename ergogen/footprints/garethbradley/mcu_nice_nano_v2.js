@@ -95,6 +95,30 @@ module.exports =  {
     P029_label: '',
     P031_label: '',
 
+    // RAW_net: '',
+    // GND_net: '',
+    // RST_net: '',
+    // VCC_net: '',
+    // P006_net: '',
+    // P008_net: '',
+    // P017_net: '',
+    // P020_net: '',
+    // P022_net: '',
+    // P024_net: '',
+    // P100_net: '',
+    // P011_net: '',
+    // P104_net: '',
+    // P106_net: '',
+
+    // P009_net: '',
+    // P010_net: '',
+    // P111_net: '',
+    // P113_net: '',
+    // P115_net: '',
+    // P002_net: '',
+    // P029_net: '',
+    // P031_net: '',
+
     // This side parameter applies to all 3d models
     mcu_3dmodel_side: '',
 

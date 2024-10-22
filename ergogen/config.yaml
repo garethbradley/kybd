@@ -3,9 +3,19 @@ units:
   ky: cy
   px: kx + 2
   py: ky + 2
+  led_shift_x: 0
+  led_shift_y: 4.5
+  mounting_hole_radius: 2.4
+  led_3dmodel_xyz_rotation_x: 0
+  led_3dmodel_xyz_rotation_y: 180
+  led_3dmodel_xyz_rotation_z: 0
+  led_3dmodel_xyz_offset_x: 0
+  led_3dmodel_xyz_offset_y: 5.1
+  led_3dmodel_xyz_offset_z: -1.7
 points:
   key:
-    padding: cy
+    padding: cy+0.1
+    spread: cx+0.1
   zones:
     matrix:
       anchor:
@@ -15,35 +25,40 @@ points:
         macro:
           key:
             tag: choc1u
-            column_net: 
+            column_net: P031
         pinky:
           key:
             tag: choc1u
+            column_net: P029
         ring:
           key:
             splay: 0
             origin: [-12, -19]
             stagger: 5
             tag: choc1u
+            column_net: P002
         middle:
           key:
             stagger: 3
             tag: choc1u
+            column_net: P115
         index:
           key:
             stagger: -3
             tag: choc1u
+            column_net: P113
         inner:
           key:
             stagger: -3
             tag: choc1u
+            column_net: P111
       rows:
         bottom:
-          row_net: P010
+          row_net: P009
         middle:
-          row_net: P011
-        top:
           row_net: P106
+        top:
+          row_net: P104
         # num:
         #   row_net: P104
     thumbfan:
@@ -70,7 +85,7 @@ points:
             rotate: 90
       rows:
         thumb:
-          row_net: P009
+          row_net: P010
         
   rotate: 0
   # mirror:
@@ -89,6 +104,48 @@ outlines:
       where: thumbfan_far_thumb
       size: [kx-0.5,1.5ky-0.5]
 
+  key_cutout:
+    - what: rectangle
+      where: true
+      size: [14, 14]
+  
+  # mounting_holes:
+  #   - what: circle
+  #     where: matrix_macro_top
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [0.5cx,3]
+  #   - what: circle
+  #     where: matrix_ring_middle
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [0.5cx,5]
+  #   - what: circle
+  #     where: matrix_index_top
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [0.5cx,3]
+  #   - what: circle
+  #     where: matrix_macro_bottom
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [0.5cx,3]
+  #   - what: circle
+  #     where: matrix_index_bottom
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [0.5cx,3]
+  #   - what: circle
+  #     where: matrix_middle_bottom
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [-0.5cx+3,-0.5cy-5]
+  #   - what: circle
+  #     where: thumbfan_far_thumb
+  #     radius: mounting_hole_radius
+  #     adjust:
+  #       shift: [0.5cx-4,0.5cy+3]
+
   board:
     - what: polygon
       operation: stack
@@ -101,15 +158,10 @@ outlines:
         - ref: matrix_macro_bottom
           shift: [-0.5px,-0.5py]
         # Notch under Ring col
-        #- ref: matrix_ring_bottom
-        #  shift: [-7,-0.5py-5]
         - ref: matrix_ring_bottom
           shift: [-7,-0.5py-5]
         - ref: matrix_ring_bottom
           shift: [0.5px-8,-0.5py-5]
-        # Start of diagonal under Index col
-        #- ref: matrix_index_bottom
-        #  shift: [4,-py]
         # Around thumbfan
         - ref: thumbfan_near_thumb
           shift: [-0.5px+0.5,-0.5px+0.5]
@@ -118,10 +170,7 @@ outlines:
         - ref: thumbfan_far_thumb
           shift: [-0.5px-5,-0.5py] #Remember, it's rotated!
         - ref: matrix_inner_bottom
-          shift: [0.5px+22,-0.5py-3]
-        # Over top of thumbfan far
-        #- ref: thumbfan_far_thumb
-        #  shift: [0.5px-2,0.5py+5]
+          shift: [0.5px+22,-0.5py-4]
         # Top right above MCU
         - ref: matrix_inner_top
           shift: [1.5px+2,0.5py-4]
@@ -135,17 +184,21 @@ outlines:
         - ref: matrix_inner_top
           shift: [-0.5px+1,0.5py+3.001]
         - ref: matrix_index_top
-          shift: [-0.5px+1,0.5py]
+          shift: [-0.5px+1.6,0.5py]
         - ref: matrix_middle_top
-          shift: [0.5px,0.5py+0.001]
+          shift: [0.5px,0.5py+0.501]
         - ref: matrix_middle_top
-          shift: [-0.5px,0.5py+0.001]
+          shift: [-0.5px,0.5py+0.501]
         - ref: matrix_middle_top
           shift: [-0.5px,0.5py-3]
+    # - operation: subtract
+    #   name: mounting_holes
+
   combo:
     - name: board
     - operation: subtract
       name: keys
+
 pcbs:
   main_pcb:
     template: kicad8 # Required, since footprints are KiCad 8 only
@@ -157,8 +210,8 @@ pcbs:
         what: garethbradley/choc
         where: thumbfan_far_thumb
         params:
-          from: =column_net
-          to: GND
+          from: "{{column_net}}"
+          to: "{{colrow}}"
           show_keycaps: false
           reverse: true
           hotswap: true
@@ -169,35 +222,312 @@ pcbs:
       choc_hotswap:
         what: garethbradley/choc
         where: -thumbfan_far_thumb
+        adjust:
+          rotate: 180
         params:
-          from: =column_net
-          to: GND
+          from: "{{column_net}}"
+          to: "{{colrow}}"
           # keycaps: true
           reverse: true
           hotswap: true
           keycap_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Choc_V1_Keycap_MBK_White_1u.step
       
-      led:
+      # TOP ROW
+      rgb_1:
         what: ceoloide/led_sk6812mini-e
-        where: true
+        where: matrix_inner_top
         params:
+          reversible: true
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: =column_net
-          P4: GND
+          P2: RGB
+          P4: RGB_2
         adjust:
-          shift: [0, -4.5]
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_2:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_index_top
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_2
+          P4: RGB_3
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_3:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_middle_top
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_3
+          P4: RGB_4
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_4:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_ring_top
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_4
+          P4: RGB_5
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_5:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_pinky_top
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_5
+          P4: RGB_6
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_6:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_macro_top
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_6
+          P4: RGB_7
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      # MIDDLE ROW
+      rgb_7:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_macro_middle
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_7
+          P4: RGB_8
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_8:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_pinky_middle
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_8
+          P4: RGB_9
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_9:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_ring_middle
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_9
+          P4: RGB_10
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_10:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_middle_middle
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_10
+          P4: RGB_11
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_11:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_index_middle
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_11
+          P4: RGB_12
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_12:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_inner_middle
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_12
+          P4: RGB_13
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      # BOTTOM ROW
+      rgb_13:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_inner_bottom
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_13
+          P4: RGB_14
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_14:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_index_bottom
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_14
+          P4: RGB_15
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_15:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_middle_bottom
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_15
+          P4: RGB_16
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_16:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_ring_bottom
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_16
+          P4: RGB_17
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_17:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_pinky_bottom
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_17
+          P4: RGB_18
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_18:
+        what: ceoloide/led_sk6812mini-e
+        where: matrix_macro_bottom
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_18
+          P4: RGB_19
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      # THUMBFAN ROW
+      rgb_19:
+        what: ceoloide/led_sk6812mini-e
+        where: thumbfan_near_thumb
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_19
+          P4: RGB_20
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_20:
+        what: ceoloide/led_sk6812mini-e
+        where: thumbfan_home_thumb
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_20
+          P4: RGB_21
+        adjust:
+          shift: [led_shift_x, led_shift_y]
+
+      rgb_21:
+        what: ceoloide/led_sk6812mini-e
+        where: thumbfan_far_thumb
+        params:
+          reversible: true
+          led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
+          led_3dmodel_xyz_rotation: [0, 180, 0]
+          led_3dmodel_xyz_offset: [0, 5.1, -1.7]
+          P2: RGB_21
+          P4: RGB_22
+        adjust:
+          shift: [-led_shift_x, -led_shift_y]
       
       diode:
         what: infused-kim/diode
-        where: true
+        where: -thumbfan_far_thumb
         params:
           include_tht: false
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-0, -7]
+          shift: [-0, 7]
+
+      diode_thumbfan_far:
+        what: infused-kim/diode
+        where: thumbfan_far_thumb
+        params:
+          include_tht: false
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -7]
       # led:
       #   what: ceoloide/led_sk6812mini-e
       #   where: true
@@ -211,6 +541,10 @@ pcbs:
           # reversible: true
           # reverse_mount: true
           mcu_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Nice_Nano_V2.step
+          P006: CS
+          P017: MOSI
+          P020: SCK
+          P008: RGB
         where:
           ref: matrix_inner_top
           shift: [px+1,-11.5]
@@ -218,6 +552,7 @@ pcbs:
       nice_view:
         what: garethbradley/nice_view
         params:
+          show_labels: false
           # reversible: true
           # reverse_mount: true
         where:
@@ -231,14 +566,32 @@ pcbs:
           shift: [18,-36.5]
           rotate: 90
       switch_power:
-        what: infused-kim/switch_power
+        what: ceoloide/power_switch_smd_side
         where:
           ref: matrix_macro_top
-          shift: [0,0.5py+3.1]
+          shift: [0,0.5py+3.3]
           rotate: 90
-      switch_reset:
+        params:
+          side: 'B'
+          reversible: true
+          switch_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Switch_Power.step
+          switch_3dmodel_xyz_offset: [0, 0, 0]
+          switch_3dmodel_xyz_rotation: [90, 180, 90]
+          switch_3dmodel_xyz_scale: [1, 1, 1]
+      switch_reset_1:
         what: infused-kim/switch_reset
         where:
           ref: matrix_pinky_top
-          shift: [0,0.5py+3.2]
+          shift: [0,0.5py+3.4]
           rotate: 90
+        params:
+          side: 'B'
+          reverse: true
+      # switch_reset_2:
+      #   what: infused-kim/switch_reset
+      #   where:
+      #     ref: matrix_pinky_top
+      #     shift: [0,0.5py+3.4]
+      #     rotate: 90
+      #   params:
+      #     side: 'F'
