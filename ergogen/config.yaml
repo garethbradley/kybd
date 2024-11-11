@@ -25,40 +25,40 @@ points:
         macro:
           key:
             tag: choc1u
-            column_net: P031
+            column_net: C1
         pinky:
           key:
             tag: choc1u
-            column_net: P029
+            column_net: C2
         ring:
           key:
             splay: 0
             origin: [-12, -19]
             stagger: 5
             tag: choc1u
-            column_net: P002
+            column_net: C3
         middle:
           key:
             stagger: 3
             tag: choc1u
-            column_net: P115
+            column_net: C4
         index:
           key:
             stagger: -3
             tag: choc1u
-            column_net: P113
+            column_net: C5
         inner:
           key:
             stagger: -3
             tag: choc1u
-            column_net: P111
+            column_net: C6
       rows:
         bottom:
-          row_net: P009
+          row_net: R3
         middle:
-          row_net: P106
+          row_net: R2
         top:
-          row_net: P104
+          row_net: R1
         # num:
         #   row_net: P104
     thumbfan:
@@ -153,10 +153,10 @@ outlines:
       points:
         # Top left
         - ref: matrix_macro_top
-          shift: [-0.5px,0.5py+5]
+          shift: [-0.5px-1,0.5py+5]
         # Bottom left
         - ref: matrix_macro_bottom
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px-1,-0.5py]
         # Notch under Ring col
         - ref: matrix_ring_bottom
           shift: [-7,-0.5py-5]
@@ -180,11 +180,13 @@ outlines:
         - ref: matrix_inner_top
           shift: [0.5px,0.5py]
         - ref: matrix_inner_top
-          shift: [-0.5px+1,0.5py]
+          shift: [-0.5px+2,0.5py]
         - ref: matrix_inner_top
-          shift: [-0.5px+1,0.5py+3.001]
-        - ref: matrix_index_top
-          shift: [-0.5px+1.6,0.5py]
+          shift: [-0.5px+2,0.5py+3.001]
+        # - ref: matrix_index_top
+        #   shift: [-0.5px+2,0.5py]
+        - ref: matrix_middle_top
+          shift: [0.5px,0.5py-3]
         - ref: matrix_middle_top
           shift: [0.5px,0.5py+0.501]
         - ref: matrix_middle_top
@@ -230,7 +232,7 @@ pcbs:
           # keycaps: true
           reverse: true
           hotswap: true
-          keycap_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Choc_V1_Keycap_MBK_White_1u.step
+          keycap_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Choc_V1_Keycap_MBK_Black_1u.step
       
       # TOP ROW
       rgb_1:
@@ -243,6 +245,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB
           P4: RGB_2
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -256,6 +260,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_2
           P4: RGB_3
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -269,6 +275,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_3
           P4: RGB_4
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -282,6 +290,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_4
           P4: RGB_5
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -295,6 +305,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_5
           P4: RGB_6
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -308,6 +320,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_6
           P4: RGB_7
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -322,8 +336,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_7
           P4: RGB_8
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_8:
         what: ceoloide/led_sk6812mini-e
@@ -335,8 +352,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_8
           P4: RGB_9
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_9:
         what: ceoloide/led_sk6812mini-e
@@ -348,8 +368,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_9
           P4: RGB_10
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_10:
         what: ceoloide/led_sk6812mini-e
@@ -361,8 +384,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_10
           P4: RGB_11
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_11:
         what: ceoloide/led_sk6812mini-e
@@ -374,8 +400,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_11
           P4: RGB_12
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_12:
         what: ceoloide/led_sk6812mini-e
@@ -387,8 +416,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_12
           P4: RGB_13
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       # BOTTOM ROW
       rgb_13:
@@ -401,6 +433,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_13
           P4: RGB_14
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -414,6 +448,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_14
           P4: RGB_15
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -427,6 +463,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_15
           P4: RGB_16
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -440,6 +478,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_16
           P4: RGB_17
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -453,6 +493,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_17
           P4: RGB_18
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -466,6 +508,8 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_18
           P4: RGB_19
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
 
@@ -480,8 +524,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_19
           P4: RGB_20
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_20:
         what: ceoloide/led_sk6812mini-e
@@ -493,8 +540,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_20
           P4: RGB_21
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_21:
         what: ceoloide/led_sk6812mini-e
@@ -506,8 +556,11 @@ pcbs:
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
           P2: RGB_21
           P4: RGB_22
+          P1: LED_DRAIN
+          P3: RAW
         adjust:
           shift: [-led_shift_x, -led_shift_y]
+          rotate: 180
       
       diode:
         what: infused-kim/diode
@@ -517,7 +570,8 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-0, 7]
+          shift: [7, 3.5]
+          rotate: 270
 
       diode_thumbfan_far:
         what: infused-kim/diode
@@ -527,7 +581,8 @@ pcbs:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [0, -7]
+          shift: [-7, -3.5]
+          rotate: 90
       # led:
       #   what: ceoloide/led_sk6812mini-e
       #   where: true
@@ -538,6 +593,7 @@ pcbs:
       nice_nano:
         what: garethbradley/mcu_nice_nano_v2
         params:
+          show_via_labels: false
           # reversible: true
           # reverse_mount: true
           mcu_3dmodel_filename: ${EG_INFUSED_KIM_3D_MODELS}/Nice_Nano_V2.step
@@ -545,15 +601,32 @@ pcbs:
           P017: MOSI
           P020: SCK
           P008: RGB
+          
+          P022: NC1
+          P024: NC2
+          P100: NC3
+          P011: NC4
+          P104: R1
+          P106: R2
+
+          P009: R3
+          P010: VRG
+          P111: C6
+          P113: C5
+          P115: C4
+          P002: C3
+          P029: C2
+          P031: C1
         where:
           ref: matrix_inner_top
           shift: [px+1,-11.5]
           rotate: 0
       nice_view:
-        what: garethbradley/nice_view
+        what: garethbradley/nice_view_reversible
         params:
           show_labels: false
-          # reversible: true
+          jumpers_at_bottom: false
+          reverse: true
           # reverse_mount: true
         where:
           ref: matrix_inner_top
@@ -565,6 +638,18 @@ pcbs:
           ref: matrix_inner_top
           shift: [18,-36.5]
           rotate: 90
+      mosfet_rgb:
+        what: garethbradley/mosfet_pjc7400
+        where:
+          ref: matrix_inner_top
+          shift: [23,-46.5]
+          rotate: 180
+        params:
+          reversible: true
+          mosfet_3dmodel_filename: ${EG_GARETHBRADLEY_3D_MODELS}/SOT323.step
+          source: GND
+          drain: LED_DRAIN
+          gate: VRG
       switch_power:
         what: ceoloide/power_switch_smd_side
         where:
