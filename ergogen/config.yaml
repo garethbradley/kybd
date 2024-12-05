@@ -70,12 +70,14 @@ points:
           key:
             splay: 0
             tag: choc1u
+            column_net: C4
         home:
           key:
             spread: 21.25
             splay: -15
             stagger: -3
             tag: choc1u
+            column_net: C5
         far:
           key:
             spread: 23.25
@@ -83,10 +85,11 @@ points:
             stagger: -0
             tag: choc15u
             rotate: 90
+            column_net: C6
       rows:
         thumb:
-          row_net: P010
-        
+          row_net: R4
+          
   rotate: 0
   # mirror:
   #   ref: thumbfan_far_thumb
@@ -171,6 +174,16 @@ outlines:
           shift: [-0.5px-5,-0.5py] #Remember, it's rotated!
         - ref: matrix_inner_bottom
           shift: [0.5px+22,-0.5py-4]
+        - ref: matrix_inner_bottom # Start of cable notch
+          shift: [0.5px+22,-5]
+        - ref: matrix_inner_bottom
+          shift: [0.5px+20.4,-5]
+        - ref: matrix_inner_bottom
+          shift: [0.5px+18.8,-5]
+        - ref: matrix_inner_bottom
+          shift: [0.5px+18.8,-1]
+        - ref: matrix_inner_bottom
+          shift: [0.5px+22,-1] # End of cable notch
         # Top right above MCU
         - ref: matrix_inner_top
           shift: [1.5px+2,0.5py-4]
@@ -243,12 +256,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB
-          P4: RGB_2
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB
+          P2: RGB_2
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_2:
         what: ceoloide/led_sk6812mini-e
@@ -258,12 +272,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_2
-          P4: RGB_3
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_2
+          P2: RGB_3
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_3:
         what: ceoloide/led_sk6812mini-e
@@ -273,12 +288,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_3
-          P4: RGB_4
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_3
+          P2: RGB_4
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_4:
         what: ceoloide/led_sk6812mini-e
@@ -288,12 +304,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_4
-          P4: RGB_5
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_4
+          P2: RGB_5
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_5:
         what: ceoloide/led_sk6812mini-e
@@ -303,12 +320,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_5
-          P4: RGB_6
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_5
+          P2: RGB_6
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_6:
         what: ceoloide/led_sk6812mini-e
@@ -318,12 +336,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_6
-          P4: RGB_7
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_6
+          P2: RGB_7
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       # MIDDLE ROW
       rgb_7:
@@ -334,13 +353,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_7
-          P4: RGB_8
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_7
+          P2: RGB_8
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_8:
         what: ceoloide/led_sk6812mini-e
@@ -350,13 +369,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_8
-          P4: RGB_9
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_8
+          P2: RGB_9
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_9:
         what: ceoloide/led_sk6812mini-e
@@ -366,13 +385,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_9
-          P4: RGB_10
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_9
+          P2: RGB_10
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_10:
         what: ceoloide/led_sk6812mini-e
@@ -382,13 +401,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_10
-          P4: RGB_11
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_10
+          P2: RGB_11
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_11:
         what: ceoloide/led_sk6812mini-e
@@ -398,13 +417,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_11
-          P4: RGB_12
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_11
+          P2: RGB_12
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_12:
         what: ceoloide/led_sk6812mini-e
@@ -414,13 +433,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_12
-          P4: RGB_13
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_12
+          P2: RGB_13
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       # BOTTOM ROW
       rgb_13:
@@ -431,12 +450,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_13
-          P4: RGB_14
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_13
+          P2: RGB_14
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_14:
         what: ceoloide/led_sk6812mini-e
@@ -446,12 +466,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_14
-          P4: RGB_15
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_14
+          P2: RGB_15
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_15:
         what: ceoloide/led_sk6812mini-e
@@ -461,12 +482,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_15
-          P4: RGB_16
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_15
+          P2: RGB_16
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_16:
         what: ceoloide/led_sk6812mini-e
@@ -476,12 +498,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_16
-          P4: RGB_17
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_16
+          P2: RGB_17
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_17:
         what: ceoloide/led_sk6812mini-e
@@ -491,12 +514,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_17
-          P4: RGB_18
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_17
+          P2: RGB_18
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       rgb_18:
         what: ceoloide/led_sk6812mini-e
@@ -506,12 +530,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_18
-          P4: RGB_19
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_18
+          P2: RGB_19
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
+          rotate: 180
 
       # THUMBFAN ROW
       rgb_19:
@@ -522,13 +547,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_19
-          P4: RGB_20
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_19
+          P2: RGB_20
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_20:
         what: ceoloide/led_sk6812mini-e
@@ -538,13 +563,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_20
-          P4: RGB_21
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_20
+          P2: RGB_21
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [led_shift_x, led_shift_y]
-          rotate: 180
+          rotate: 0
 
       rgb_21:
         what: ceoloide/led_sk6812mini-e
@@ -554,13 +579,13 @@ pcbs:
           led_3dmodel_filename: '${EG_GARETHBRADLEY_3D_MODELS}/LED_SK6812MINI-E.step'
           led_3dmodel_xyz_rotation: [0, 180, 0]
           led_3dmodel_xyz_offset: [0, 5.1, -1.7]
-          P2: RGB_21
-          P4: RGB_22
-          P1: LED_DRAIN
-          P3: RAW
+          P4: RGB_21
+          P2: RGB_22
+          P1: RAW
+          P3: LED_DRAIN
         adjust:
           shift: [-led_shift_x, -led_shift_y]
-          rotate: 180
+          rotate: 0
       
       diode:
         what: infused-kim/diode
@@ -604,13 +629,13 @@ pcbs:
           
           P022: NC1
           P024: NC2
-          P100: NC3
-          P011: NC4
+          P100: VRGB
+          P011: VLCD
           P104: R1
           P106: R2
 
           P009: R3
-          P010: VRG
+          P010: R4
           P111: C6
           P113: C5
           P115: C4
@@ -627,17 +652,20 @@ pcbs:
           show_labels: false
           jumpers_at_bottom: false
           reverse: true
+          VCC: VLCD
           # reverse_mount: true
         where:
           ref: matrix_inner_top
           shift: [px+1,-14.5]
           rotate: 0
       batt_conn:
-        what: garethbradley/battery_connector_jst_ph_2
+        what: garethbradley/battery_connector_jst_ph_2_smd
         where:
           ref: matrix_inner_top
-          shift: [18,-36.5]
+          shift: [21.5,-37]
           rotate: 90
+        params:
+          reversible: true
       mosfet_rgb:
         what: garethbradley/mosfet_pjc7400
         where:
@@ -649,7 +677,7 @@ pcbs:
           mosfet_3dmodel_filename: ${EG_GARETHBRADLEY_3D_MODELS}/SOT323.step
           source: GND
           drain: LED_DRAIN
-          gate: VRG
+          gate: VRGB
       switch_power:
         what: ceoloide/power_switch_smd_side
         where:
@@ -672,11 +700,18 @@ pcbs:
         params:
           side: 'B'
           reverse: true
-      # switch_reset_2:
-      #   what: infused-kim/switch_reset
+      # mounting_hole_1:
+      #   what: ceoloide/mounting_hole_plated
       #   where:
-      #     ref: matrix_pinky_top
-      #     shift: [0,0.5py+3.4]
-      #     rotate: 90
-      #   params:
-      #     side: 'F'
+      #     ref: matrix_macro_top
+      #     shift: [0.5cx,-0.5cy]
+      # mounting_hole_2:
+      #   what: ceoloide/mounting_hole_plated
+      #   where:
+      #     ref: matrix_macro_middle
+      #     shift: [0.5cx,-0.5cy]
+      # mounting_hole_3:
+      #   what: ceoloide/mounting_hole_plated
+      #   where:
+      #     ref: matrix_index_top
+      #     shift: [0.5cx,-0.5cy-1]

@@ -399,18 +399,18 @@ module.exports =  {
         socket_row += `
 
           ${''/* Silkscreen Labels - Front */}
-          (fp_text user ${net_silk_front_left} (at -2.9 ${-12.7 + row_offset_y}) (layer F.SilkS)
+          (fp_text user ${net_silk_front_right} (at -2.9 ${-12.7 + row_offset_y}) (layer F.SilkS)
             (effects (font (size 0.8 0.8) (thickness 0.15)) (justify left))
           )
-          (fp_text user ${net_silk_front_right} (at 2.9 ${-12.7 + row_offset_y}) (layer F.SilkS)
+          (fp_text user ${net_silk_front_left} (at 2.9 ${-12.7 + row_offset_y}) (layer F.SilkS)
             (effects (font (size 0.8 0.8) (thickness 0.15)) (justify right))
           )
 
           ${''/* Silkscreen Labels - Back */}
-          (fp_text user ${net_silk_back_left} (at -2.9 ${-12.7 + row_offset_y} 180) (layer B.SilkS)
+          (fp_text user ${net_silk_back_right} (at -2.9 ${-12.7 + row_offset_y} 180) (layer B.SilkS)
             (effects (font (size 0.8 0.8) (thickness 0.15)) (justify right mirror))
           )
-          (fp_text user ${net_silk_back_right} (at 2.9 ${-12.7 + row_offset_y} 180) (layer B.SilkS)
+          (fp_text user ${net_silk_back_left} (at 2.9 ${-12.7 + row_offset_y} 180) (layer B.SilkS)
             (effects (font (size 0.8 0.8) (thickness 0.15)) (justify left mirror))
           )
         `

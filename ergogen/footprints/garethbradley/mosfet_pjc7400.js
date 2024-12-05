@@ -109,8 +109,8 @@ module.exports = {
         (fp_line (start 0.675 -1.1) (end -0.675 -1.1) (stroke (width 0.1) (type solid)) (layer "B.Fab"))
 
         
-        (pad "1" smd roundrect (at -1.33 0.65 ${p.r + 270}) (size 0.45 1.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.source.str})
-        (pad "2" smd roundrect (at -1.33 -0.65 ${p.r + 270}) (size 0.45 1.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.gate.str})
+        (pad "1" smd roundrect (at -1.33 0.65 ${p.r + 270}) (size 0.45 1.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.gate.str})
+        (pad "2" smd roundrect (at -1.33 -0.65 ${p.r + 270}) (size 0.45 1.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.source.str})
         (pad "3" smd roundrect (at 1.33 0 ${p.r + 270}) (size 0.45 1.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.drain.str})
         `
 
